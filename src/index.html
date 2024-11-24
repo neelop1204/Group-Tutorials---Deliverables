@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Temperature Converter</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="neutral">
+    <div class="container">
+    <h1>Temperature Converter</h1>
+
+    <label for="inputTemp">Enter Temperature:</label>
+    <input 
+      type="number" 
+      id="inputTemp" 
+      placeholder="Enter value" 
+      aria-label="Enter temperature value to convert"
+    >
+
+    <label for="convertFrom">Convert From:</label>
+    <select id="convertFrom" aria-label="Select unit to convert from">
+      <option value="C">Celsius</option>
+      <option value="F">Fahrenheit</option>
+      <option value="K">Kelvin</option>
+    </select>
+
+    <label for="convertTo">Convert To:</label>
+    <select id="convertTo" aria-label="Select unit to convert to">
+      <option value="C">Celsius</option>
+      <option value="F">Fahrenheit</option>
+      <option value="K">Kelvin</option>
+    </select>
+
+    <button id="convertButton" aria-label="Click to convert temperature">Convert</button>
+
+    <p id="result" role="alert" aria-live="polite"></p>
+  </div>
+
+  <script src="converter.js"></script>
+</body>
+</html>

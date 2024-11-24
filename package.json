@@ -1,0 +1,19 @@
+{
+  "name": "temperature-converter",
+  "version": "1.0.0",
+  "description": "A simple application for converting temperatures with unit testing.",
+  "main": "src/converter.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "jest",
+    "start": "echo \"This is a static project. Open src/index.html in a browser.\""
+  },
+  "keywords": ["temperature", "converter", "unit-testing", "jest"],
+  "author": "Your Name",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
