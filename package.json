@@ -2,18 +2,29 @@
   "name": "temperature-converter",
   "version": "1.0.0",
   "description": "A simple application for converting temperatures with unit testing.",
-  "main": "src/converter.js",
+  "main": "src/server.js",
   "directories": {
     "test": "tests"
   },
   "scripts": {
     "test": "jest",
-    "start": "echo \"This is a static project. Open src/index.html in a browser.\""
+    "start": "node src/server.js"
   },
-  "keywords": ["temperature", "converter", "unit-testing", "jest"],
+  "keywords": [
+    "temperature",
+    "converter",
+    "unit-testing",
+    "jest",
+    "node",
+    "express"
+  ],
   "author": "Your Name",
   "license": "ISC",
   "devDependencies": {
     "jest": "^29.7.0"
+  },
+  "dependencies": {
+    "express": "^4.21.1",
+    "mongodb": "^6.11.0"
   }
 }

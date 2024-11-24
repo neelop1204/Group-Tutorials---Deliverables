@@ -19,7 +19,7 @@ function convertTemperature(value, fromUnit, toUnit) {
     }
 }
 
-document.getElementById('convertButton').addEventListener('click', () => {
+document.getElementById('convertButton').addEventListener('click', async () => {
     const resultElement = document.getElementById('result');
     const inputTemp = parseFloat(document.getElementById('inputTemp').value);
     const convertFrom = document.getElementById('convertFrom').value;
@@ -31,15 +31,31 @@ document.getElementById('convertButton').addEventListener('click', () => {
         return;
     }
 
-    const convertedValue = convertTemperature(inputTemp, convertFrom, convertTo);
+    try {
+        // Sending POST request to backend API
+        const response = await fetch('/api/convert', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ value: inputTemp, fromUnit: convertFrom, toUnit: convertTo }),
+        });
+        const data = await response.json();
+        const convertedValue = data.convertedValue;
 
-    resultElement.textContent = `${inputTemp}° ${convertFrom} is converted to ${convertedValue.toFixed(2)}° ${convertTo}`;
+        // Update result text
+        resultElement.textContent = `${inputTemp}° ${convertFrom} is converted to ${convertedValue.toFixed(2)}° ${convertTo}`;
 
-    if (convertedValue <= 10) {
-        document.body.className = 'cool'; 
-    } else if (convertedValue >= 30) {
-        document.body.className = 'warm'; 
-    } else {
-        document.body.className = 'neutral'; 
+        // Update background
+        if (convertedValue <= 10) {
+            document.body.className = 'cool';
+        } else if (convertedValue >= 30) {
+            document.body.className = 'warm';
+        } else {
+            document.body.className = 'neutral';
+        }
+    } catch (error) {
+        resultElement.textContent = 'Error in conversion. Please try again.';
+        console.error('Error:', error);
     }
 });
