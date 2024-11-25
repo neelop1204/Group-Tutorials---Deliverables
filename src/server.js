@@ -2,13 +2,13 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000; // Changed to 5000
 
 // Middleware to parse incoming JSON requests
 app.use(express.json());
 
-// Serve static files from 'src' directory
-app.use(express.static(path.join(__dirname)));
+// Serve static files from the root directory
+app.use(express.static(__dirname));
 
 // Serve index.html on root request
 app.get('/', (req, res) => {
@@ -19,10 +19,13 @@ app.get('/', (req, res) => {
 app.post('/api/convert', (req, res) => {
     const { value, fromUnit, toUnit } = req.body;
 
+    console.log('Request data:', req.body);
+
     try {
         const convertedValue = convertTemperature(value, fromUnit, toUnit);
         res.json({ convertedValue });
     } catch (error) {
+        console.error('Conversion Error:', error.message);
         res.status(400).json({ error: error.message });
     }
 });

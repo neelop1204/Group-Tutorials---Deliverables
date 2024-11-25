@@ -1,5 +1,4 @@
 // src/domHandler.js
-const { convertTemperature } = require('./converter');
 
 document.getElementById('convertButton').addEventListener('click', async () => {
     const resultElement = document.getElementById('result');
@@ -22,6 +21,11 @@ document.getElementById('convertButton').addEventListener('click', async () => {
             },
             body: JSON.stringify({ value: inputTemp, fromUnit: convertFrom, toUnit: convertTo }),
         });
+
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+
         const data = await response.json();
         const convertedValue = data.convertedValue;
 
