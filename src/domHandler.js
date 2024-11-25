@@ -1,4 +1,3 @@
-// src/domHandler.js
 
 document.getElementById('convertButton').addEventListener('click', async () => {
     const resultElement = document.getElementById('result');
@@ -13,7 +12,7 @@ document.getElementById('convertButton').addEventListener('click', async () => {
     }
 
     try {
-        // Sending POST request to backend API
+        
         const response = await fetch('/api/convert', {
             method: 'POST',
             headers: {
@@ -29,10 +28,9 @@ document.getElementById('convertButton').addEventListener('click', async () => {
         const data = await response.json();
         const convertedValue = data.convertedValue;
 
-        // Update result text
+        
         resultElement.textContent = `${inputTemp}° ${convertFrom} is converted to ${convertedValue.toFixed(2)}° ${convertTo}`;
 
-        // Update background based on temperature
         if (convertedValue <= 10) {
             document.body.className = 'cool';
         } else if (convertedValue >= 30) {

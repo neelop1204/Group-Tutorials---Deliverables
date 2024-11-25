@@ -1,4 +1,3 @@
-// src/converter.js
 
 function celsiusToFahrenheit(value) {
     return (value * 9) / 5 + 32;
@@ -24,7 +23,6 @@ function kelvinToFahrenheit(value) {
     return ((value - 273.15) * 9) / 5 + 32;
 }
 
-// Exporting the functions for testing
 module.exports = {
     celsiusToFahrenheit,
     celsiusToKelvin,
